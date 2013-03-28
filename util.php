@@ -12,6 +12,8 @@
  */
 class util {
     
+    
+    
     private $databasePath = "127.0.0.1";
     private $databaseUser = "root";
     private $databasePass = "nou";
