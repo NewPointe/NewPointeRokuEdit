@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<feed>
+	<!-- resultLength indicates the total number of results for this feed -->
+	<resultLength>4</resultLength>
+	<!-- endIndix  indicates the number of results for this *paged* section of the feed -->
+	<endIndex>4</endIndex>
+	<item sdImg="http://www.newpointe.org/uploads/currentseries.png" hdImg="http://www.newpointe.org/uploads/currentseries.png">
+		<title>Vimeo Test</title>
+		<contentId>10051</contentId>
+		<contentType>Talk</contentType>
+		<contentQuality>SD</contentQuality>
+		<streamFormat>mp4</streamFormat>
+		<media>
+			<streamQuality>SD</streamQuality>
+			<streamBitrate>1500</streamBitrate>
+			<streamUrl>http://pdl.vimeocdn.com/78624/511/143992515.mp4?token=1360620371_2436d5dd8aa5e83d9446c33c9cd5f1da</streamUrl>
+		</media>
+		<synopsis>Test .mp4 from Vimeo </synopsis>
+		<genres>Think Orange</genres>
+		<runtime>4054</runtime>
+	</item>	
+	<item sdImg="http://www.newpointe.org/uploads/currentseries.png" hdImg="http://www.newpointe.org/uploads/currentseries.png">
+		<title>Keeping The Main Thing</title>
+		<contentId>10052</contentId>
+		<contentType>Talk</contentType>
+		<contentQuality>SD</contentQuality>
+		<streamFormat>mp4</streamFormat>
+		<media>
+			<streamQuality>SD</streamQuality>
+			<streamBitrate>1500</streamBitrate>
+			<streamUrl>http://www.newpointe.org/uploads/WE-2011-12-18.mp4</streamUrl>
+		</media>
+		<synopsis>Program Date: 4/29/12.  Communicator: Dwight Mason.  Description goes here. </synopsis>
+		<genres>Think Orange</genres>
+		<runtime>1024</runtime>
+        </item>
+        <item sdImg="http://www.newpointe.org/uploads/currentseries.png" hdImg="http://www.newpointe.org/uploads/currentseries.png">
+                <title>Seek Strategic Relationships</title>
+                <contentId>10053</contentId>
+                <contentType>Talk</contentType>
+                <contentQuality>SD</contentQuality>
+                <streamFormat>mp4</streamFormat>
+                <media>
+                        <streamQuality>SD</streamQuality>
+                        <streamBitrate>1500</streamBitrate>
+                        <streamUrl>http://www.newpointe.org/uploads/WE-2011-12-18.mp4</streamUrl>
+                </media>                
+		<synopsis>Program Date: 4/22/12.  Communicator: Dwight Mason.  Description goes here. </synopsis>
+                <genres>Think Orange</genres>
+                <runtime>1010</runtime>
+        </item>		<item sdImg="http://www.newpointe.org/uploads/currentseries.png" hdImg="http://www.newpointe.org/uploads/currentseries.png">
+                <title>Recognize the Potential</title>
+                <contentId>10053</contentId>
+                <contentType>Talk</contentType>
+                <contentQuality>SD</contentQuality>
+                <streamFormat>mp4</streamFormat>
+                <media>
+                        <streamQuality>SD</streamQuality>
+                        <streamBitrate>1500</streamBitrate>
+                        <streamUrl>http://www.newpointe.org/uploads/WE-2011-12-18.mp4</streamUrl>
+                </media>                
+		<synopsis>Program Date: 4/22/12.  Communicator: Dwight Mason.  Description goes here. </synopsis>
+                <genres>Think Orange</genres>
+                <runtime>1010</runtime>
+        </item>
+</feed>

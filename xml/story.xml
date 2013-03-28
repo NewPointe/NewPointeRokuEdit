@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<feed>
+<resultLength>2</resultLength>
+<endIndex>2</endIndex>
+
+<item sdImg="http://s3.amazonaws.com/NewPointeRoku/images/roku.png" hdImg="http://s3.amazonaws.com/NewPointeRoku/images/roku.png">
+<title>Story Test Message</title>
+<contentId>39</contentId>
+<contentType>Talk</contentType>
+<contentQuality>SD</contentQuality>
+<streamFormat>mp4</streamFormat>
+<media>
+<streamQuality>SD</streamQuality>
+<streamBitrate>1500</streamBitrate>
+<streamUrl>http://s3.amazonaws.com/NewPointeRoku/videos/VIDEO0004.mp4</streamUrl>
+</media>
+<synopsis>Program Date: 2013-02-10 Communicator: Dwight Mason  Test Message </synopsis>
+<genres>Story</genres>
+<runtime>4353</runtime>
+</item>
+
+<item sdImg="http://s3.amazonaws.com/NewPointeRoku/images/roku.png" hdImg="http://s3.amazonaws.com/NewPointeRoku/images/roku.png">
+<title>Story Test Message 2</title>
+<contentId>42</contentId>
+<contentType>Talk</contentType>
+<contentQuality>SD</contentQuality>
+<streamFormat>mp4</streamFormat>
+<media>
+<streamQuality>SD</streamQuality>
+<streamBitrate>1500</streamBitrate>
+<streamUrl>http://s3.amazonaws.com/NewPointeRoku/videos/</streamUrl>
+</media>
+<synopsis>Program Date: 2013-03-24 Communicator: Dwight Mason  test </synopsis>
+<genres>Story</genres>
+<runtime>1000</runtime>
+</item>
+
+</feed>
