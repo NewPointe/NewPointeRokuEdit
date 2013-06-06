@@ -1,21 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<feed>
-	<!-- resultLength indicates the total number of results for this feed -->
-	<resultLength>1</resultLength>
-	<!-- endIndix  indicates the number of results for this *paged* section of the feed -->
-	<endIndex>1</endIndex>		<item sdImg="http://www.newpointe.org/uploads/live.png" hdImg="http://www.newpointe.org/uploads/live.png">
-                <title>NewPointe Community Church - Live Stream</title>
-                <contentId>10053</contentId>
-                <contentType>Talk</contentType>
-                <contentQuality>SD</contentQuality>
-                <streamFormat>hls</streamFormat>
-                <media>
-                        <streamQuality>HD</streamQuality>
-                        <streamBitrate>1500</streamBitrate>
-                        <streamUrl>http://184.72.239.149/vod/smil:BigBuckBunny.smil/playlist.m3u8</streamUrl>
-                </media>                
-		<synopsis>Description goes here. </synopsis>
-                <genres>Current Series Here?</genres>
-                <runtime>4000</runtime>
-        </item>
-</feed>

@@ -1,128 +1,80 @@
-<?php
+<?php require 'dpnd/utils.php'; ?>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-require('data.php');
-$data = new data();
+        <?php require 'dpnd/jsDepend.php'; ?>
 
-?>
-
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-
-
-
-<!-- Add jQuery library -->
-<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-
-
-<!-- Add fancyBox -->
-<link rel="stylesheet" href="fancybox/source/jquery.fancybox.css?v=2.1.4" type="text/css" media="screen" />
-<script type="text/javascript" src="fancybox/source/jquery.fancybox.pack.js?v=2.1.4"></script>
-        
         <script type="text/javascript">
-$(document).ready(function() {
-		$(".fancybox").fancybox();
-	});
-      
- $(document).ready(function() {
-  $("#link").fancybox();
-  $("#btn").click(function(){
-    $("#link").trigger('click');
-  });
-});
-
-</script>
-        
-          <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
-
-  <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
-     <script>
-                    $(function() {
-                            $( "#datepicker" ).datepicker({ dateFormat: 'yy-mm-dd' });
-                    });
-                </script>
-    
-    <title>Add Message</title>
-
-
-<link href="style.css" rel="stylesheet" type="text/css" />
-</head>
-
-<body>
-<div id="topPan">
-	<a href="index.php"><img src="images/newpointe.png" alt="NewPointe" wborder="0" class="logo" title="NewPointe" /></a>
-	</div>
-
-<div id="bodyPan">
-        
-    <h1>Add A Message</h1>
-    <br />
-        
-        <form name = "addmessage" action = "addMessageAction.php" method = "POST" enctype = "multipart/form-data">
             
+            function init(){
+                
+                $(".datepicker" ).datepicker({ dateFormat: 'yy-mm-dd' });
+                
+                setUpForm(['formName','formSeries','formDate','formCommunicator']);
+                
+                newFileInStyle("vidIn1", "Add a Video", "video/*", 140, 405);
+                newFileInStyle("vidIn2", "Add an HD Video", "video/*", 140, 405);
+                
+        document.getElementById('addMessageForm').setAttribute('onsubmit', "return validateAllInput(['formName','formSeries','formDate','formCommunicator', 'vidIn1InputPannel', 'vidIn2InputPannel'])");
+                
+            }
             
-            <table border="0">
-                <tbody>
-                    <tr>
-                        <td>Message Name:</td>
-                        <td><input type="text" name="name" value="" size="50"/></td>
-                    </tr>
-                    <tr>
-                        <td>Message Series:</td>
-                        <td><select name="series" class="small-input" id="series">
-                              <?php echo $data->addMessageGetSeries(); ?>
-                            </select> </td>
-                    </tr>
-                    <tr>
-                        <td>Message Date:</td>
-                        <td><input type="text" name="date" value="" id="datepicker" /></td>
-                    </tr>
-                    <tr>
-                        <td>Message Communicator:</td>
-                        <td><input type="text" name="communicator" value="" /></td>
-                    </tr>
-                    <tr>
-                        <td>Message Runtime:</td>
-                        <td><input type="text" name="runtime" value="" size="5"/>(Round up to nearest minute)</td>
-                    </tr>
-                    <tr>
-                        <td>Video File:</td>
-                        <td><input type="file" name="file" id="file" /></td>
-                    </tr>
-                    <tr>
-                        <td><br /></td>
-                        <td><br /></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td><input type="submit" id="btn" value="Add Message" /></td>
-                    </tr>
-                </tbody>
-            </table>
+        </script>
+
+        <title>Roku Edit</title>
+    </head>
+    <body onload="init();">
+        <?php require 'dpnd/Header.php'; ?>
 
 
-</form>
+        <div id="mainBodyArea">
 
-    <div style="display:none;"> 
- <a href="#test" id="link">Click</a>
-</div>
+            <h2>Add A Message</h2>
+            
+            <br />
+            <div class="styledForm">
+                <form id="addMessageForm" name="addmessage" action="addMessageAction.php" method="POST" enctype="multipart/form-data">
+                    <table>
+                        <tr>
+                            <td class="td1">
+                                <label>Name
+                                    <span class="small">The name of the message.</span>
+                                </label>
+                                <input type="text" id="formName" class="in" size="30" />
 
-<div id="test" style="display:none;">Please wait... Your video is uploading.<br /><br />
-    Do not close this window until you see the upload confirmation. </div>
-        
-	</div>
+                                <label>Series
+                                    <span class="small">The series that the message is in.</span>
+                                </label>
+                                <select id="formSeries" class="in"  >
+                                    <?php getSeriesList(); ?>
+                                </select>
 
-	
-	<div id="footermainPan">
-  <div id="footerPan">
+                                <label>Date
+                                    <span class="small">The date of the message.</span>
+                                </label>
+                                <input type="text" id="formDate" class="in datepicker" />
 
-		<p class="copyright">Build 27-2.6</p>
-  </div>
-</div>
-</body>
+                                <label>Communicator
+                                    <span class="small">The communicator for this message.</span>
+                                </label>
+                                <input type="text" id="formCommunicator" class="in" />
+
+                            </td>
+                            <td class="td2">
+                                <div id="vidIn1" style="clear:both"></div>
+                                <div id="vidIn2" style="clear:both"></div>
+                                <br />
+                                <input type="submit" class="btn" value="Add Message" />
+                                <div style="clear:both"></div>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+
+        <?php require 'dpnd/Footer.php'; ?>
+    </body>
 </html>
-
-

@@ -1,76 +1,64 @@
 <?php
 
-if (!class_exists('S3')) require_once 'S3.php';
-require('util.php');
-    $util = new util();
+if (!class_exists('S3'))
+    require_once 'dpnd/S3.php';
+require 'dpnd/utils.php';
 
 
-$bucketName = $util->getBucketName() . 'images';
+$imageBucketName = $util->getBucketName() . 'images';
+
 
 $s3 = new S3($util->getAwsAccessKey(), $util->getAwsSecretKey());
 
+$user = "bronson";
 
-    //$user = $_SESSION["loggedInAs"];
-    $user = "bronson";
+$name = $_POST["name"];
+$description = $_POST["description"];
+$startdate = $_POST["startdate"];
+$enddate = $_POST["enddate"];
 
-    $name = $_POST["name"];
-    $description= $_POST["description"];
-    $startdate = $_POST["startdate"];
-    $enddate = $_POST["enddate"];
+
+$graphicurl = $_FILES["file"]["name"];
+
+
+$strippedname = preg_replace('/\s+/', '', $name);
+$feedURL = strtolower($strippedname) . ".xml";
+
+if ($_FILES["file"]["name"] != null) {
+
+    echo "Proccessing file upload.<br />";
     
-    $graphicurl = $_FILES["file"]["name"];
+    $allowedExts = array("gif", "jpg", "png");
+    uploadFile($_FILES["file"], $allowedExts, $s3, $imageBucketName);
     
-    $strippedname = preg_replace('/\s+/', '', $name);
-    $feedURL = strtolower($strippedname) . ".xml";
+    echo "File uploaded.<br />";
     
+}
+
+    echo "Connecting to SQL Database...<br />";
+    echo "...<br />";
+    echo "...<br />";
     
-    if($_FILES["file"]["name"] != null){
+$con = mysql_connect($config['db']['host'], $config['db']['username'], $config['db']['password']);
 
-            $allowedExts = array("gif", "jpg", "png");
-            $extension = end(explode(".", $_FILES["file"]["name"]));
-            if (($_FILES["file"]["size"] < 5368709)
-            && in_array($extension, $allowedExts))
-              {
-              if ($_FILES["file"]["error"] > 0)
-                {
-                echo "Return Code: " . $_FILES["file"]["error"] . "<br />";
-                }
-              else
-                {
-                echo "Upload: " . $_FILES["file"]["name"] . "<br />";
-                echo "Type: " . $_FILES["file"]["type"] . "<br />";
-                echo "Size: " . ($_FILES["file"]["size"] / 1024) . " Kb<br />";
-                echo "Temp file: " . $_FILES["file"]["tmp_name"] . "<br />";
-                echo "<br />";
-                echo "<b>Please wait.  Updating the Roku XML on S3...</b>";
+if (!$con) {
+    die('Error: Could not connect to SQL Database: ' . mysql_error());
+}
+    echo "Connected to SQL Database.<br />";
+    echo "Updating records...<br />";
 
-                $s3->putObjectFile($_FILES["file"]["tmp_name"], $bucketName, baseName($_FILES["file"]["name"]), S3::ACL_PUBLIC_READ);
+mysql_select_db($util->getDatabaseName(), $con);
 
-                  
-                }
-              }
-            else
-              {
-              echo "Invalid file";
-              }
-              
-            }
-
-    
-$con = mysql_connect($util->getDatabasePath(),$util->getDatabaseUser(),$util->getDatabasePass());
-    
-            if (!$con)
-            {
-            die('Could not connect: ' . mysql_error());
-            }
-
-            mysql_select_db($util->getDatabaseName(), $con);
-
-            mysql_query("INSERT INTO series (seriesname, description, startdate, enddate, feedURL, imageurl, createdBy, createdDate, enabled)
+mysql_query("INSERT INTO series (seriesname, description, startdate, enddate, feedURL, imageurl, createdBy, createdDate, enabled)
                         VALUES ('$name', '$description', '$startdate', '$enddate', '$feedURL', '$graphicurl', '$user', CURDATE(), true);");
-            
-           
-            
-            print '<script language="Javascript">document.location.replace("success.php");</script>';
 
+    echo "Records updated.";
+
+    echo "Updating XML...<br />";
+    echo "...<br />";
+    echo "You will be redirected in 3 seconds...";
+    echo "...<br />";
+    echo "...<br />";
+    echo "...<br />";
+print '<script language="Javascript">document.setTimeout(document.location.replace("updateRokuXML.php"), 5000);</script>';
 ?>
